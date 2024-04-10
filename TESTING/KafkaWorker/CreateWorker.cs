@@ -5,16 +5,14 @@ namespace TESTING.KafkaWorker
     public class CreateWorker : BackgroundService
     {
         private readonly ILogger<CreateWorker> _logger;
-        private readonly IConfiguration _config;
         private readonly string _host;
         private readonly string _topic;
 
-        public CreateWorker(ILogger<CreateWorker> logger, IConfiguration config)
+        public CreateWorker(ILogger<CreateWorker> logger, string topic)
         {
             _logger = logger;
-            _config = config;
             _host = "localhost:9092";
-            _topic = "Kafka:Topic";
+            _topic = topic;
 
         }
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
